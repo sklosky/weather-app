@@ -1,0 +1,12 @@
+# Ignore tar files
+*.tar
+
+# Ignore common OS files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore node_modules directory if you have any
+node_modules/
