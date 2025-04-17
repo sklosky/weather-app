@@ -1,0 +1,42 @@
+# Docker Commands for Weather App
+# =================================
+
+## CONTAINER MANAGEMENT
+# ---------------------
+
+# List all running containers
+docker ps
+
+# Sample output:
+# CONTAINER ID   IMAGE         COMMAND                  CREATED       STATUS          PORTS                    NAMES
+# ee87da834a95   node:alpine   "docker-entrypoint.s…"   2 hours ago   Up 33 minutes   0.0.0.0:3000->3000/tcp   nextjs-typescript-dev
+
+
+## IMAGE MANAGEMENT
+# ----------------
+
+# Create image from a running container (save your changes)
+docker commit nextjs-typescript-dev weather-app:latest
+
+# Save image to a tar file for backup/transfer
+docker save -o weather-app.tar weather-app:latest
+
+# Load image from a tar file
+docker load -i weather-app.tar
+
+
+## RUNNING CONTAINERS
+# ------------------
+
+# Run weather app container with npm start in the correct directory
+docker run -d -p 3000:3000 --name weather-app-container weather-app:latest sh -c "cd /app/weather && npm start"
+
+# Other useful commands:
+# Stop a running container
+# docker stop weather-app-container
+
+# Remove a container
+# docker rm weather-app-container
+
+# View container logs
+# docker logs weather-app-container
